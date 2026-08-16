@@ -1,7 +1,7 @@
 """Run journal: first-person memo, curves, and audit events (Section 13).
 
-Each evolution run writes a self-describing directory ``runs/<name>/`` with a
-journal, per-round pass-rate curves, a scoreboard, and an audit log of every
+Each evolution run writes a self-describing directory ``output/runs/<name>/``
+with a journal, per-round pass-rate curves, and an audit log of every
 stage/gate/commit decision.
 """
 
@@ -16,12 +16,12 @@ from typing import Any
 @dataclass
 class Journal:
     name: str
-    root: Path = field(default_factory=Path)
+    root: Path | None = None
     entries: list[dict[str, Any]] = field(default_factory=list)
 
     def __post_init__(self) -> None:
-        if not str(self.root):
-            self.root = Path("runs") / self.name
+        if self.root is None:
+            self.root = Path("output") / "runs" / self.name
         self.root.mkdir(parents=True, exist_ok=True)
 
     def log(self, round_: int, memo: str, **extra: Any) -> None:

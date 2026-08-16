@@ -16,7 +16,7 @@ dist/
 .env
 
 # HarnessX run artifacts
-runs/
+output/
 
 # OS/editor
 .DS_Store
