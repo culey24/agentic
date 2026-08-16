@@ -1,0 +1,1 @@
+{"task_id": "alfworld-001", "task_type": "pick_and_place", "object": "mug 1", "source": "shelf 1", "target": "cabinet 1", "system_prompt": "You are an agent in a room. Respond with text actions like \"go to shelf 1\", \"take mug 1 from shelf 1\", \"put mug 1 in cabinet 1\"."}

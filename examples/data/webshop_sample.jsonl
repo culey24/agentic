@@ -1,0 +1,1 @@
+{"task_id": "webshop-001", "goal": {"color": "red"}, "catalog": [{"title": "Red Shirt", "price": 10, "attributes": {"color": "red", "size": "M"}}, {"title": "Blue Shirt", "price": 12, "attributes": {"color": "blue", "size": "M"}}], "system_prompt": "You are shopping on a website. Use search[keywords] to find items, click[item N] to view, and click[Buy Now] to purchase."}

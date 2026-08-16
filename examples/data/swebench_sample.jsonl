@@ -1,0 +1,1 @@
+{"instance_id": "demo__repo-1", "repo": "demo/repo", "problem_statement": "The function add in math_utils.py returns the wrong result for negative numbers. Fix it.", "repo_path": "/path/to/repo", "FAIL_TO_PASS": ["tests/test_math.py::test_add_negative"], "PASS_TO_PASS": ["tests/test_math.py::test_add_positive"]}

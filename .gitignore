@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment
+.env
+
+# HarnessX run artifacts
+runs/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

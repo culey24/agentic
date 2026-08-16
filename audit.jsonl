@@ -1,0 +1,230 @@
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R0-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R0-00", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R1-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R1-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R1-01", "gate_stage": "gate", "reason": "accepted"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-00", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-00", "gate_stage": "build", "reason": "edit application failed: singleton group 'system_prompt' already present at task_start"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-01", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "fail", "candidate": "C-R2-01", "gate_stage": "build", "reason": "edit application failed: singleton group 'tool_approval' already present at before_tool"}
+{"stage": "critic", "event": "ship", "candidate": "C-R2-02", "reason": "manifest aligns with evidence"}
+{"stage": "gate", "event": "pass", "candidate": "C-R2-02", "gate_stage": "gate", "reason": "accepted"}
