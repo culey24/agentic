@@ -92,6 +92,16 @@ def _build_parser() -> argparse.ArgumentParser:
     evolve.add_argument("--provider", choices=PROVIDERS, default=None)
     evolve.add_argument("--rollouts", type=int, default=None)
 
+    coevolve = sub.add_parser("coevolve", help="run harness-model co-evolution (Section 5)")
+    coevolve.add_argument("--benchmark", default=None)
+    coevolve.add_argument("--data", default=None, help="path to benchmark data (JSONL)")
+    coevolve.add_argument("--rounds", type=int, default=None)
+    coevolve.add_argument("--model", default=None)
+    coevolve.add_argument("--meta-model", default=None)
+    coevolve.add_argument("--provider", choices=PROVIDERS, default=None)
+    coevolve.add_argument("--rollouts", type=int, default=None)
+    coevolve.add_argument("--buffer-capacity", type=int, default=10000)
+
     return parser
 
 
@@ -112,19 +122,13 @@ async def _run_task(settings: Settings, task: str) -> None:
     print(result.final_output)
 
 
-async def _evolve(settings: Settings) -> None:
+def _build_benchmark(settings: Settings):
     from harnessx.benchmarks.alfworld import ALFWorldAdapter
     from harnessx.benchmarks.gaia import GAIAAdapter
     from harnessx.benchmarks.swebench import SWEBenchAdapter, SWEHarness
     from harnessx.benchmarks.tau3.adapter import DialogueHarness, Tau3Adapter
     from harnessx.benchmarks.text_env import TextGameHarness
     from harnessx.benchmarks.webshop import WebShopAdapter
-    from harnessx.evolve.loop import EvolutionLoop
-    from harnessx.tracing.journal import Journal
-
-    if not settings.data:
-        print("no --data set; use `set data <path>` or pass --data")
-        raise SystemExit(1)
 
     task_provider = _make_provider(settings.provider, settings.model)
     meta_provider = _make_provider(settings.provider, settings.meta_model)
@@ -150,10 +154,19 @@ async def _evolve(settings: Settings) -> None:
         print(f"unknown benchmark {benchmark!r}")
         raise SystemExit(1)
 
-    tasks = adapter.load_tasks()
-    verifier = adapter.verifier()
+    return adapter, harness, adapter.load_tasks(), adapter.verifier(), meta_provider
 
-    journal = Journal(f"{benchmark}_evolution")
+
+async def _evolve(settings: Settings) -> None:
+    from harnessx.evolve.loop import EvolutionLoop
+    from harnessx.tracing.journal import Journal
+
+    if not settings.data:
+        print("no --data set; use `set data <path>` or pass --data")
+        raise SystemExit(1)
+
+    _, harness, tasks, verifier, meta_provider = _build_benchmark(settings)
+    journal = Journal(f"{settings.benchmark}_evolution")
     loop = EvolutionLoop(
         meta_provider=meta_provider,
         harness=harness,
@@ -162,6 +175,32 @@ async def _evolve(settings: Settings) -> None:
         journal=journal,
         n_rollouts=settings.rollouts,
         max_rounds=settings.rounds,
+    )
+    result = await loop.run()
+    print(json.dumps(result, indent=2))
+
+
+async def _coevolve(settings: Settings) -> None:
+    from harnessx.evolve.loop import EvolutionLoop
+    from harnessx.rl import CollectOnlyTrainer, MixedPolicyBuffer
+    from harnessx.tracing.journal import Journal
+
+    if not settings.data:
+        print("no --data set; use `set data <path>` or pass --data")
+        raise SystemExit(1)
+
+    _, harness, tasks, verifier, meta_provider = _build_benchmark(settings)
+    journal = Journal(f"{settings.benchmark}_coevolution")
+    loop = EvolutionLoop(
+        meta_provider=meta_provider,
+        harness=harness,
+        tasks=tasks,
+        verifier=verifier,
+        journal=journal,
+        n_rollouts=settings.rollouts,
+        max_rounds=settings.rounds,
+        buffer=MixedPolicyBuffer(capacity=10000),
+        trainer=CollectOnlyTrainer(),
     )
     result = await loop.run()
     print(json.dumps(result, indent=2))
@@ -177,7 +216,7 @@ def _settings_from_args(args: argparse.Namespace, config: dict) -> Settings:
             value = getattr(args, key)
             if value is not None:
                 setattr(settings, key, value)
-    elif args.command == "evolve":
+    elif args.command in ("evolve", "coevolve"):
         for key in ("benchmark", "data", "rounds", "model", "meta_model", "provider", "rollouts"):
             value = getattr(args, key)
             if value is not None:
@@ -310,10 +349,12 @@ def main() -> None:
     parser = _build_parser()
     args = parser.parse_args()
 
-    if args.command in ("run", "evolve"):
+    if args.command in ("run", "evolve", "coevolve"):
         settings = _settings_from_args(args, config)
         if args.command == "run":
             asyncio.run(_run_task(settings, args.task))
+        elif args.command == "coevolve":
+            asyncio.run(_coevolve(settings))
         else:
             asyncio.run(_evolve(settings))
     else:

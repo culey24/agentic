@@ -8,6 +8,7 @@ proposes richer combinations.
 
 from __future__ import annotations
 
+import logging
 from typing import Any
 
 from harnessx.core.harness_config import HarnessConfig
@@ -16,6 +17,8 @@ from harnessx.evolve.llm import call_json
 from harnessx.evolve.manifest import Candidate, ChangeManifest, Edit, EditOp
 from harnessx.evolve.types import Landscape
 from harnessx.processors.registry import kinds as all_kinds
+
+logger = logging.getLogger("harnessx.evolve")
 
 HOOKS = [h.value for h in Hook]
 
@@ -46,7 +49,11 @@ class Evolver:
     ) -> list[Candidate]:
         if self.provider is None:
             return self._heuristic(landscape)
-        return await self._llm_evolve(landscape, base_config)
+        try:
+            return await self._llm_evolve(landscape, base_config)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("LLM evolver failed (%s); falling back to heuristic", exc)
+            return self._heuristic(landscape)
 
     def _heuristic(self, landscape: Landscape) -> list[Candidate]:
         edits_by_comp = {
@@ -99,6 +106,7 @@ class Evolver:
             "kinds": {
                 k: v for k, v in KIND_SPECS.items() if k in all_kinds()
             },
+            "settable_paths": ["max_steps"],
         }
         system = (
             "You are the Evolver stage of an agent-harness evolution engine. "
@@ -107,8 +115,17 @@ class Evolver:
             "\"intended_effect\": str, \"expected_improve\": [str], "
             "\"expected_regress\": [str], \"edits\": [{\"op\": \"insert|replace|"
             "remove|set\", \"hook\": str|null, \"group\": str|null, \"kind\": "
-            "str|null, \"params\": {}, \"path\": str|null, \"value\": null}]}]}. "
-            "Only use hooks and kinds from the provided surface."
+            "str|null, \"params\": {}, \"path\": str|null, \"value\": null}]}]}.\n"
+            "Schema rules (violations make a candidate unusable):\n"
+            "- insert: requires hook AND kind; group optional.\n"
+            "- replace: requires hook AND kind; use group to target an existing "
+            "processor.\n"
+            "- remove: requires hook AND group (e.g. system_prompt, history_trim, "
+            "tool_approval, reward_annotate).\n"
+            "- set: requires path from settable_paths, otherwise omit.\n"
+            "- Do NOT invent kinds or hooks; only use the provided surface.\n"
+            "- Prefer small, targeted edits that directly address the failing "
+            "tasks."
         )
         user = (
             "Landscape:\n"
@@ -119,7 +136,10 @@ class Evolver:
         data = await call_json(self.provider, system, user)
         candidates = []
         for i, c in enumerate(data["candidates"]):
-            edits = [_edit_from_dict(e) for e in c.get("edits", [])]
+            raw_edits = c.get("edits", [])
+            edits = [_edit_from_dict(e) for e in raw_edits if _valid_edit(e)]
+            if not edits:
+                continue
             manifest = ChangeManifest(
                 id=c.get("id") or f"C-R{landscape.round}-{i:02d}",
                 edits=edits,
@@ -132,6 +152,20 @@ class Evolver:
                 Candidate(manifest=manifest, round=landscape.round, number=i)
             )
         return candidates
+
+
+def _valid_edit(d: dict[str, Any]) -> bool:
+    try:
+        op = EditOp(d.get("op"))
+    except ValueError:
+        return False
+    if op == EditOp.SET:
+        return bool(d.get("path")) and d.get("path") in ("max_steps",)
+    if op == EditOp.REMOVE:
+        return bool(d.get("hook")) and bool(d.get("group"))
+    if op in (EditOp.INSERT, EditOp.REPLACE):
+        return bool(d.get("hook")) and bool(d.get("kind"))
+    return False
 
 
 def _edit_from_dict(d: dict[str, Any]) -> Edit:

@@ -209,7 +209,10 @@ class RunLoop:
         tool = registry.get(name)
         if tool is None:
             return {"error": f"unknown tool {name!r}"}
-        return await tool.run(**arguments)
+        try:
+            return await tool.run(**arguments)
+        except Exception as exc:  # noqa: BLE001
+            return {"error": f"tool {name!r} failed: {exc}"}
 
 
 def _stringify(value: Any) -> str:

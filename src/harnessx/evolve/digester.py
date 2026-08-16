@@ -8,11 +8,14 @@ LLM-backed digester can be supplied for richer summarization.
 
 from __future__ import annotations
 
+import logging
 from typing import Any
 
 from harnessx.core.trajectory import Trajectory
 from harnessx.evolve.llm import call_json
 from harnessx.evolve.types import Digest
+
+logger = logging.getLogger("harnessx.evolve")
 
 _CATEGORY_COMPONENTS: dict[str, list[str]] = {
     "empty_output": ["D2.context", "D6.evaluation"],
@@ -33,7 +36,11 @@ class Digester:
     ) -> list[Digest]:
         if self.provider is None:
             return [self._heuristic(tid, traj, outcomes[tid]) for tid, traj in trajectories.items()]
-        return await self._llm_digest(trajectories, outcomes)
+        try:
+            return await self._llm_digest(trajectories, outcomes)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("LLM digester failed (%s); falling back to heuristic", exc)
+            return [self._heuristic(tid, traj, outcomes[tid]) for tid, traj in trajectories.items()]
 
     def _heuristic(
         self, task_id: str, traj: Trajectory, success: bool

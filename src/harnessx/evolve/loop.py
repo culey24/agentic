@@ -25,6 +25,7 @@ from harnessx.evolve.evolver import Evolver
 from harnessx.evolve.gate import Gate
 from harnessx.evolve.planner import Planner
 from harnessx.evolve.types import Digest, VerdictAction
+from harnessx.rl.bridge import TrajectoryBridge
 from harnessx.tracing.journal import Journal
 
 logger = logging.getLogger("harnessx.evolve")
@@ -97,6 +98,10 @@ class EvolutionLoop:
     patience: int = 3
     noise_threshold: float = 0.05
     base_config: HarnessConfig | None = None
+    buffer: Any = None
+    trainer: Any = None
+    train_batch_size: int = 256
+    train_every: int = 1
 
     def __post_init__(self) -> None:
         self.base_config = self.base_config or self.harness.harness_config
@@ -105,6 +110,9 @@ class EvolutionLoop:
         self.evolver = Evolver(self.meta_provider, self.candidates_per_round)
         self.critic = Critic(self.meta_provider)
         self.gate = Gate(Builder())
+        self._bridge = TrajectoryBridge()
+        self._harness_version = 0
+        self._train_steps = 0
 
     async def run(self) -> dict[str, Any]:
         prior_edits: list[str] = []
@@ -129,6 +137,8 @@ class EvolutionLoop:
             )
             logger.info("round %d pass_rate=%.3f", round_, rate)
 
+            await self._collect_records(results, self._harness_version)
+
             trajectories = {
                 tid: r.trajectories[-1] for tid, r in results.items()
             }
@@ -136,6 +146,8 @@ class EvolutionLoop:
             landscape = await self.planner.plan(round_, digests, prior_edits)
 
             shipped = await self._try_ship(round_, landscape, digests, results, outcomes)
+            if shipped is not None:
+                self._harness_version += 1
 
             if shipped is None:
                 self.journal.log(round_, "no candidate shipped (no-op round)")
@@ -147,6 +159,9 @@ class EvolutionLoop:
                 prior_edits.extend(components)
                 stale_rounds = 0
 
+            if self.trainer is not None and (round_ + 1) % self.train_every == 0:
+                await self._train()
+
             if rate > best_rate:
                 best_rate = rate
                 stale_rounds = 0
@@ -154,7 +169,45 @@ class EvolutionLoop:
                 logger.info("early stop after %d stale rounds", stale_rounds)
                 break
 
-        return {"history": history, "best": best_rate, "final": history[-1] if history else None}
+        return {
+            "history": history,
+            "best": best_rate,
+            "final": history[-1] if history else None,
+            "train_steps": self._train_steps,
+            "buffer_size": len(self.buffer) if self.buffer else 0,
+        }
+
+    async def _collect_records(self, results: dict[str, EvaluationResult], version: int) -> None:
+        if self.buffer is None:
+            return
+        for result in results.values():
+            for traj in result.trajectories:
+                record = self._bridge.to_record(
+                    traj, harness_version=f"R{version}"
+                )
+                self.buffer.insert(record)
+
+    async def _train(self) -> None:
+        if self.buffer is None or self.trainer is None:
+            return
+        from harnessx.rl.buffer import MixedPolicyBuffer
+        from harnessx.rl.grpo import GRPOConfig
+
+        if not isinstance(self.buffer, MixedPolicyBuffer):
+            return
+        batch = self.buffer.sample(min(self.train_batch_size, len(self.buffer)))
+        if not batch:
+            return
+        result = await self.trainer.update(batch, GRPOConfig())
+        self._train_steps += 1
+        self.journal.audit(
+            "train", "update",
+            step=self._train_steps,
+            records=result.records,
+            objective=result.objective,
+            updated=result.updated,
+        )
+        logger.info("train step %d on %d records", self._train_steps, result.records)
 
     async def _try_ship(
         self,
@@ -202,15 +255,15 @@ class EvolutionLoop:
         async def seesaw(config: HarnessConfig) -> tuple[bool, str]:
             if not previously_passing:
                 return True, "no previously passing tasks"
-            candidate_harness = Harness(
-                model_config=self.harness.model_config, harness_config=config
+            candidate_harness = type(self.harness)(
+                self.harness.model_config, config
             )
             subset = previously_passing[:10]
             new_results = await evaluate(
                 candidate_harness,
                 [t for t in self.tasks if getattr(t, "id", str(id(t))) in subset],
                 self.verifier,
-                n_rollouts=1,
+                n_rollouts=self.n_rollouts,
                 concurrency=self.concurrency,
             )
             new_ok = sum(r.solved for r in new_results.values())

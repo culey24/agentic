@@ -7,11 +7,14 @@ primary defense against under-exploration.
 
 from __future__ import annotations
 
+import logging
 from collections import Counter
 from typing import Any
 
 from harnessx.evolve.llm import call_json
 from harnessx.evolve.types import Digest, Landscape
+
+logger = logging.getLogger("harnessx.evolve")
 
 
 class Planner:
@@ -27,7 +30,11 @@ class Planner:
         prior_edits = prior_edits or []
         if self.provider is None:
             return self._heuristic(round_, digests, prior_edits)
-        return await self._llm_plan(round_, digests, prior_edits)
+        try:
+            return await self._llm_plan(round_, digests, prior_edits)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("LLM planner failed (%s); falling back to heuristic", exc)
+            return self._heuristic(round_, digests, prior_edits)
 
     def _heuristic(
         self, round_: int, digests: list[Digest], prior_edits: list[str]

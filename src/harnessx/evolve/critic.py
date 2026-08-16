@@ -8,11 +8,14 @@ acceptance.
 
 from __future__ import annotations
 
+import logging
 from typing import Any
 
 from harnessx.evolve.llm import call_json
 from harnessx.evolve.manifest import Candidate
 from harnessx.evolve.types import Digest, Verdict, VerdictAction
+
+logger = logging.getLogger("harnessx.evolve")
 
 
 class Critic:
@@ -24,7 +27,11 @@ class Critic:
     ) -> Verdict:
         if self.provider is None:
             return self._heuristic(candidate, digests)
-        return await self._llm_critique(candidate, digests)
+        try:
+            return await self._llm_critique(candidate, digests)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("LLM critic failed (%s); falling back to heuristic", exc)
+            return self._heuristic(candidate, digests)
 
     def _heuristic(self, candidate: Candidate, digests: list[Digest]) -> Verdict:
         manifest = candidate.manifest

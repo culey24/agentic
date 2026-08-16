@@ -1,0 +1,6 @@
+{"task_id": "g001", "Question": "What is the capital of France?", "Level": 1, "Final answer": "Paris"}
+{"task_id": "g002", "Question": "How many continents are on Earth?", "Level": 1, "Final answer": "7"}
+{"task_id": "g003", "Question": "Who wrote the novel 1984?", "Level": 1, "Final answer": "George Orwell"}
+{"task_id": "g004", "Question": "Browse https://example.com and tell me the exact text shown in the page's main heading (the <h1> element).", "Level": 1, "Final answer": "Example Domain"}
+{"task_id": "g005", "Question": "What is 15 multiplied by 14?", "Level": 1, "Final answer": "210"}
+{"task_id": "g006", "Question": "Which planet is known as the Red Planet?", "Level": 1, "Final answer": "Mars"}
