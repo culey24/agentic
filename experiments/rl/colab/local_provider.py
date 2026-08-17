@@ -311,8 +311,8 @@ class LocalQwenProvider(Provider):
         )
         input_ids = inputs["input_ids"].to(self._device)
         attention_mask = inputs["attention_mask"].to(self._device)
-        outputs = FastLanguageModel.generate(
-            self._model,
+        FastLanguageModel.for_inference(self._model)
+        outputs = self._model.generate(
             input_ids=input_ids,
             attention_mask=attention_mask,
             max_new_tokens=self.max_tokens,
