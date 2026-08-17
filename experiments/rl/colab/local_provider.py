@@ -172,17 +172,12 @@ class LocalQwenProvider(Provider):
     def tokenize(self, messages: list[Message], tools: list[dict[str, Any]] | None = None) -> list[int]:
         """Return prompt token ids for a message list (chat template applied)."""
         self.load()
-        from unsloth import FastLanguageModel
-
-        out = FastLanguageModel.apply_chat_template(
-            self._tokenizer,
-            conversation=self._render(messages, tools),
+        out = self._tokenizer.apply_chat_template(
+            self._render(messages, tools),
             add_generation_prompt=True,
             tokenize=True,
-            return_tensors="np",
         )
-        ids = getattr(out, "input_ids", out)
-        return ids.tolist()[0]
+        return out[0]
 
     def compute_logprobs(
         self, prompt_tokens: list[int], completion_tokens: list[int]
@@ -307,23 +302,25 @@ class LocalQwenProvider(Provider):
     def _generate(self, conv: list[dict[str, Any]]) -> tuple[str, list[int]]:
         from unsloth import FastLanguageModel
 
-        inputs = FastLanguageModel.apply_chat_template(
-            self._tokenizer,
-            conversation=conv,
+        inputs = self._tokenizer.apply_chat_template(
+            conv,
             add_generation_prompt=True,
             tokenize=True,
+            return_dict=True,
             return_tensors="pt",
-        ).to(self._device)
+        )
+        input_ids = inputs["input_ids"].to(self._device)
+        attention_mask = inputs["attention_mask"].to(self._device)
         outputs = FastLanguageModel.generate(
             self._model,
-            input_ids=inputs.input_ids,
-            attention_mask=inputs.attention_mask,
+            input_ids=input_ids,
+            attention_mask=attention_mask,
             max_new_tokens=self.max_tokens,
             temperature=self.temperature,
             do_sample=self.temperature > 0,
             pad_token_id=self._tokenizer.eos_token_id,
         )
-        prompt_len = inputs.input_ids.shape[1]
+        prompt_len = input_ids.shape[1]
         new_ids = outputs[0][prompt_len:].tolist()
         text = self._tokenizer.decode(new_ids, skip_special_tokens=True)
         return text, new_ids
